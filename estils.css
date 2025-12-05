@@ -621,6 +621,237 @@ code {
 }
 /* ============================================
    ████████████████████████████████████████████
+   P1-CSS: ESTATS :REQUIRED
+   ████████████████████████████████████████████
+   ============================================ */
+
+/* === Indicador visual per camps obligatoris === */
+
+/* Estil base per inputs required */
+.input-wrapper input:required,
+.select-wrapper select:required,
+.textarea-wrapper textarea:required {
+    background-image: linear-gradient(
+        to right,
+        transparent calc(100% - 4px),
+        var(--primary) calc(100% - 4px)
+    );
+    background-size: 100% 3px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+}
+
+/* Barra inferior animada quan és required */
+.input-wrapper input:required,
+.select-wrapper select:required,
+.textarea-wrapper textarea:required {
+    position: relative;
+}
+
+/* Required + Focus: barra s'expandeix */
+.input-wrapper input:required:focus,
+.select-wrapper select:required:focus,
+.textarea-wrapper textarea:required:focus {
+    background-image: linear-gradient(
+        to right,
+        var(--primary) 0%,
+        var(--primary-light) 100%
+    );
+    background-size: 100% 3px;
+}
+
+/* Required + Valid: barra verda */
+.input-wrapper input:required:valid:not(:placeholder-shown) {
+    background-image: linear-gradient(
+        to right,
+        var(--success) 0%,
+        #34d399 100%
+    );
+    background-size: 100% 3px;
+}
+
+/* Required + Invalid (sense focus): barra vermella */
+.input-wrapper input:required:invalid:not(:placeholder-shown):not(:focus) {
+    background-image: linear-gradient(
+        to right,
+        var(--error) 0%,
+        #f87171 100%
+    );
+    background-size: 100% 3px;
+}
+
+/* === Asterisk animat per camps required === */
+.camp-label .required {
+    animation: pulse-required 2s ease-in-out infinite;
+    display: inline-block;
+    font-weight: 700;
+}
+
+@keyframes pulse-required {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+/* === Estil especial per fieldset amb required === */
+.checkbox-inline input:required + .checkbox-custom-inline {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-bg);
+}
+
+.checkbox-inline input:required:checked + .checkbox-custom-inline {
+    border-color: var(--success);
+    box-shadow: 0 0 0 2px var(--success-bg);
+}
+
+.checkbox-inline input:required:invalid + .checkbox-custom-inline {
+    animation: shake-gentle 0.5s ease-in-out;
+}
+
+@keyframes shake-gentle {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+/* === Marcador lateral per seccions amb camps obligatoris === */
+.form-section:has(input:required) {
+    border-left: 4px solid var(--primary);
+    padding-left: calc(var(--space-8) - 4px);
+}
+
+/* Si tots els required estan vàlids, canvia a verd */
+.form-section:has(input:required:valid):not(:has(input:required:invalid)) {
+    border-left-color: var(--success);
+}
+
+/* === Comptador de camps obligatoris (visual) === */
+.form-section:has(input:required)::before {
+    background: var(--primary-bg);
+    border-radius: var(--radius-full);
+    color: var(--primary);
+    content: '●';
+    font-size: 0.6rem;
+    left: 0;
+    padding: 2px 6px;
+    position: absolute;
+    top: var(--space-6);
+}
+
+/* === Input required amb icona d'advertència === */
+.input-wrapper:has(input:required)::before {
+    color: var(--gray-400);
+    content: '';
+    font-size: 0.7rem;
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all var(--transition);
+    z-index: 1;
+}
+
+/* Quan és required i invalid, mostra icona */
+.input-wrapper:has(input:required:invalid:not(:placeholder-shown):not(:focus))::before {
+    color: var(--error);
+    content: '⚠';
+}
+
+/* Quan és required i valid, mostra check */
+.input-wrapper:has(input:required:valid:not(:placeholder-shown))::before {
+    color: var(--success);
+    content: '';
+}
+
+/* === Transició suau per tots els estats === */
+.input-wrapper input:required,
+.select-wrapper select:required,
+.textarea-wrapper textarea:required {
+    transition: 
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background-size 0.4s ease-out,
+        background-image 0.3s ease;
+}
+
+/* === Efecte glow per required en focus === */
+.input-wrapper input:required:focus {
+    box-shadow: 
+        0 0 0 4px var(--primary-bg),
+        0 0 20px rgba(99, 102, 241, 0.2),
+        inset 0 -3px 0 var(--primary);
+}
+
+.input-wrapper input:required:valid:not(:placeholder-shown):focus {
+    box-shadow: 
+        0 0 0 4px var(--success-bg),
+        0 0 20px rgba(16, 185, 129, 0.2),
+        inset 0 -3px 0 var(--success);
+}
+
+.input-wrapper input:required:invalid:not(:placeholder-shown):focus {
+    box-shadow: 
+        0 0 0 4px var(--error-bg),
+        0 0 20px rgba(239, 68, 68, 0.2),
+        inset 0 -3px 0 var(--error);
+}
+
+/* === Label canvia de color segons estat del required === */
+.camp:has(input:required:valid:not(:placeholder-shown)) .camp-label {
+    color: var(--success);
+}
+
+.camp:has(input:required:invalid:not(:placeholder-shown):not(:focus)) .camp-label {
+    color: var(--error);
+}
+
+/* === Tooltip informatiu per camps required === */
+.camp:has(input:required) .camp-label::after {
+    background: var(--gray-700);
+    border-radius: var(--radius-sm);
+    color: var(--white);
+    content: 'Camp obligatori';
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    margin-left: var(--space-2);
+    opacity: 0;
+    padding: var(--space-1) var(--space-2);
+    pointer-events: none;
+    position: absolute;
+    transform: translateY(-2px);
+    transition: all var(--transition);
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+.camp:has(input:required) .camp-label:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* === Progress visual de camps completats === */
+.formulari::before {
+    background: var(--gray-200);
+    border-radius: var(--radius-full);
+    content: '';
+    height: 4px;
+    left: var(--space-10);
+    position: absolute;
+    right: var(--space-10);
+    top: var(--space-4);
+}
+
+/* Nota: Per fer un progress real necessitaries JS, 
+   però podem simular-ho amb :has() */
+
+/* ============================================
+   ████████████████████████████████████████████
    P1-CSS: FORMULARI - PART 2 (INPUTS ESPECIALS)
    ████████████████████████████████████████████
    ============================================ */
@@ -2182,196 +2413,5 @@ a.contact-item:hover {
 
     .team-member p {
         display: block;
-    }
-}
-/* ============================================
-   ████████████████████████████████████████████
-   ANIMACIONS I EFECTES EXTRA
-   ████████████████████████████████████████████
-   ============================================ */
-
-/* === Efecte pulse per elements interactius === */
-@keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 var(--primary-bg);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
-    }
-}
-
-.btn-primary:focus {
-    animation: pulse 1.5s infinite;
-}
-
-/* === Efecte shake per errors === */
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-    20%, 40%, 60%, 80% { transform: translateX(5px); }
-}
-
-.input-wrapper input:invalid:not(:placeholder-shown):not(:focus) {
-    animation: shake 0.5s ease-in-out;
-}
-
-/* === Efecte glow per focus === */
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary-bg);
-    }
-    50% {
-        box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary-bg);
-    }
-}
-
-/* === Efecte gradient animat per hero === */
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.hero {
-    background-size: 200% 200%;
-    animation: gradientShift 15s ease infinite;
-}
-
-/* === Scroll reveal (quan es carrega la pàgina) === */
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.form-section {
-    animation: slideUp 0.6s ease-out;
-    animation-fill-mode: both;
-}
-
-.form-section:nth-child(1) { animation-delay: 0.1s; }
-.form-section:nth-child(2) { animation-delay: 0.2s; }
-.form-section:nth-child(3) { animation-delay: 0.3s; }
-.form-section:nth-child(4) { animation-delay: 0.4s; }
-
-.component-card {
-    animation: slideUp 0.6s ease-out;
-    animation-fill-mode: both;
-}
-
-.component-card:nth-child(1) { animation-delay: 0.1s; }
-.component-card:nth-child(2) { animation-delay: 0.2s; }
-.component-card:nth-child(3) { animation-delay: 0.3s; }
-.component-card:nth-child(4) { animation-delay: 0.4s; }
-
-/* === Hover lift per cards === */
-.component-card {
-    transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.component-card:hover {
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-5px);
-}
-
-/* === Focus visible per accessibilitat === */
-*:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 2px;
-}
-
-/* === Smooth scroll === */
-html {
-    scroll-behavior: smooth;
-}
-
-/* === Selection personalitzat === */
-::selection {
-    background: var(--primary);
-    color: var(--white);
-}
-
-::-moz-selection {
-    background: var(--primary);
-    color: var(--white);
-}
-
-/* === Scrollbar personalitzat === */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--gray-100);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--gray-400);
-    border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary);
-}
-
-/* === Tooltip amb CSS (bonus) === */
-[data-tooltip] {
-    position: relative;
-}
-
-[data-tooltip]::after {
-    background: var(--gray-800);
-    border-radius: var(--radius-sm);
-    color: var(--white);
-    content: attr(data-tooltip);
-    font-size: var(--font-size-xs);
-    left: 50%;
-    opacity: 0;
-    padding: var(--space-2) var(--space-3);
-    pointer-events: none;
-    position: absolute;
-    top: -40px;
-    transform: translateX(-50%) translateY(5px);
-    transition: all var(--transition);
-    visibility: hidden;
-    white-space: nowrap;
-    z-index: var(--z-dropdown);
-}
-
-[data-tooltip]:hover::after {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    visibility: visible;
-}
-
-/* === Print styles === */
-@media print {
-    .navbar,
-    .hamburger,
-    .hero-decoration,
-    .footer {
-        display: none;
-    }
-
-    .hero {
-        background: none;
-        color: var(--gray-800);
-        padding: var(--space-4);
-    }
-
-    .hero-title,
-    .hero-subtitle {
-        color: var(--gray-800);
-    }
-
-    .component-card,
-    .formulari {
-        box-shadow: none;
-        border: 1px solid var(--gray-300);
     }
 }
