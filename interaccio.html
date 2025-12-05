@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactivitat amb CSS | Exercici 006</title>
+    <link rel="stylesheet" href="estils.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="pagina-interaccio">
+
+    <!-- CHECKBOX OCULT PER AL MENÚ MÒBIL -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <span class="brand-icon">📝</span>
+            <span class="brand-text">Exercici 006</span>
+        </a>
+        
+        <label for="menu-toggle" class="hamburger" aria-label="Menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
+
+        <nav class="navbar-menu">
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">📋</span>
+                Formulari
+            </a>
+            <a href="interaccio.html" class="nav-link active">
+                <span class="nav-icon">✨</span>
+                Interacció
+            </a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero hero-interaccio">
+        <div class="hero-content">
+            <h1 class="hero-title">Interactivitat amb CSS</h1>
+            <p class="hero-subtitle">Components interactius creats només amb HTML i CSS, sense JavaScript!</p>
+        </div>
+        <div class="hero-decoration">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+
+            <!-- ==================== -->
+            <!-- COMPONENT 1: TABS -->
+            <!-- ==================== -->
+            <section class="component-card">
+                <div class="component-header">
+                    <span class="component-icon">📑</span>
+                    <div class="component-info">
+                        <h2 class="component-title">Pestanyes CSS (Tabs)</h2>
+                        <p class="component-desc">Navegació per pestanyes utilitzant <code>:has()</code> i radio buttons ocults.</p>
+                    </div>
+                </div>
+
+                <div class="tabs-container">
+                    <!-- Radio buttons ocults -->
+                    <input type="radio" id="tab1" name="tabs" class="tab-input" checked>
+                    <input type="radio" id="tab2" name="tabs" class="tab-input">
+                    <input type="radio" id="tab3" name="tabs" class="tab-input">
+                    <input type="radio" id="tab4" name="tabs" class="tab-input">
+
+                    <!-- Tab buttons -->
+                    <div class="tabs-nav">
+                        <label for="tab1" class="tab-btn">
+                            <span class="tab-icon">🏠</span>
+                            <span class="tab-text">Inici</span>
+                        </label>
+                        <label for="tab2" class="tab-btn">
+                            <span class="tab-icon">🛠️</span>
+                            <span class="tab-text">Serveis</span>
+                        </label>
+                        <label for="tab3" class="tab-btn">
+                            <span class="tab-icon">👥</span>
+                            <span class="tab-text">Equip</span>
+                        </label>
+                        <label for="tab4" class="tab-btn">
+                            <span class="tab-icon">📞</span>
+                            <span class="tab-text">Contacte</span>
+                        </label>
+                    </div>
+
+                    <!-- Tab contents -->
+                    <div class="tabs-content">
+                        <div class="tab-panel panel-1">
+                            <div class="tab-panel-inner">
+                                <h3>👋 Benvingut al nostre lloc!</h3>
+                                <p>Aquesta és una demostració de pestanyes creades <strong>només amb HTML i CSS</strong>, sense cap línia de JavaScript.</p>
+                                <div class="feature-box">
+                                    <h4>Com funciona?</h4>
+                                    <ul>
+                                        <li>Els <code>input[type="radio"]</code> estan ocults amb CSS</li>
+                                        <li>Els <code>&lt;label&gt;</code> actuen com a botons clicables</li>
+                                        <li>El selector <code>:has()</code> detecta quin input està marcat</li>
+                                        <li>Es mostra només el contingut corresponent</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel panel-2">
+                            <div class="tab-panel-inner">
+                                <h3>🛠️ Els nostres serveis</h3>
+                                <div class="services-grid">
+                                    <div class="service-item">
+                                        <span class="service-icon">🎨</span>
+                                        <h4>Disseny Web</h4>
+                                        <p>Interfícies modernes i atractives</p>
+                                    </div>
+                                    <div class="service-item">
+                                        <span class="service-icon">💻</span>
+                                        <h4>Desenvolupament</h4>
+                                        <p>Codi net i optimitzat</p>
+                                    </div>
+                                    <div class="service-item">
+                                        <span class="service-icon">📱</span>
+                                        <h4>Responsive</h4>
+                                        <p>Adaptat a tots els dispositius</p>
+                                    </div>
+                                    <div class="service-item">
+                                        <span class="service-icon">🚀</span>
+                                        <h4>Optimització</h4>
+                                        <p>Màxim rendiment garantit</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel panel-3">
+                            <div class="tab-panel-inner">
+                                <h3>👥 El nostre equip</h3>
+                                <div class="team-grid">
+                                    <div class="team-member">
+                                        <div class="member-avatar">👨‍💻</div>
+                                        <h4>Marc García</h4>
+                                        <p>Frontend Developer</p>
+                                    </div>
+                                    <div class="team-member">
+                                        <div class="member-avatar">👩‍🎨</div>
+                                        <h4>Laura Puig</h4>
+                                        <p>UX/UI Designer</p>
+                                    </div>
+                                    <div class="team-member">
+                                        <div class="member-avatar">👨‍🔧</div>
+                                        <h4>Jordi Mas</h4>
+                                        <p>Backend Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel panel-4">
+                            <div class="tab-panel-inner">
+                                <h3>📞 Contacta amb nosaltres</h3>
+                                <div class="contact-info">
+                                    <a href="mailto:info@exemple.com" class="contact-item">
+                                        <span class="contact-icon">📧</span>
+                                        <span>info@exemple.com</span>
+                                    </a>
+                                    <a href="tel:+34900123456" class="contact-item">
+                                        <span class="contact-icon">📱</span>
+                                        <span>+34 900 123 456</span>
+                                    </a>
+                                    <div class="contact-item">
+                                        <span class="contact-icon">📍</span>
+                                        <span>Barcelona, Catalunya</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== -->
+            <!-- COMPONENT 2: CAROUSEL -->
+            <!-- ==================== -->
+            <section class="component-card">
+                <div class="component-header">
+                    <span class="component-icon">🎠</span>
+                    <div class="component-info">
+                        <h2 class="component-title">Carousel CSS</h2>
+                        <p class="component-desc">Galeria d'imatges navegable amb radio buttons i <code>transform: translateX()</code>.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-container">
+                    <!-- Radio buttons ocults -->
+                    <input type="radio" id="slide1" name="carousel" class="carousel-input" checked>
+                    <input type="radio" id="slide2" name="carousel" class="carousel-input">
+                    <input type="radio" id="slide3" name="carousel" class="carousel-input">
+                    <input type="radio" id="slide4" name="carousel" class="carousel-input">
+
+                    <div class="carousel-wrapper">
+                        <div class="carousel-slides">
+                            <div class="carousel-slide slide-1">
+                                <div class="slide-content">
+                                    <span class="slide-number">01</span>
+                                    <h3>Disseny Creatiu</h3>
+                                    <p>Solucions visuals úniques per cada projecte</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide slide-2">
+                                <div class="slide-content">
+                                    <span class="slide-number">02</span>
+                                    <h3>Codi de Qualitat</h3>
+                                    <p>Desenvolupament professional i escalable</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide slide-3">
+                                <div class="slide-content">
+                                    <span class="slide-number">03</span>
+                                    <h3>Experiència d'Usuari</h3>
+                                    <p>Interfícies intuïtives i accessibles</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide slide-4">
+                                <div class="slide-content">
+                                    <span class="slide-number">04</span>
+                                    <h3>Suport Continu</h3>
+                                    <p>Acompanyament en tot el procés</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fletxes navegació -->
+                        <div class="carousel-arrows">
+                            <label class="arrow arrow-prev arrow-prev-1" for="slide4">❮</label>
+                            <label class="arrow arrow-next arrow-next-1" for="slide2">❯</label>
+                            <label class="arrow arrow-prev arrow-prev-2" for="slide1">❮</label>
+                            <label class="arrow arrow-next arrow-next-2" for="slide3">❯</label>
+                            <label class="arrow arrow-prev arrow-prev-3" for="slide2">❮</label>
+                            <label class="arrow arrow-next arrow-next-3" for="slide4">❯</label>
+                            <label class="arrow arrow-prev arrow-prev-4" for="slide3">❮</label>
+                            <label class="arrow arrow-next arrow-next-4" for="slide1">❯</label>
+                        </div>
+                    </div>
+
+                    <!-- Dots navegació -->
+                    <div class="carousel-dots">
+                        <label for="slide1" class="dot"></label>
+                        <label for="slide2" class="dot"></label>
+                        <label for="slide3" class="dot"></label>
+                        <label for="slide4" class="dot"></label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== -->
+            <!-- COMPONENT 3: FLIP CARDS -->
+            <!-- ==================== -->
+            <section class="component-card">
+                <div class="component-header">
+                    <span class="component-icon">🃏</span>
+                    <div class="component-info">
+                        <h2 class="component-title">Flip Cards</h2>
+                        <p class="component-desc">Targetes amb efecte 3D al passar el ratolí usant <code>transform: rotateY()</code>.</p>
+                    </div>
+                </div>
+
+                <div class="flipcards-grid">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front front-1">
+                                <span class="flip-icon">🎨</span>
+                                <h3>Disseny</h3>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>Disseny Web</h4>
+                                <p>Creem interfícies atractives, modernes i funcionals que captiven els usuaris.</p>
+                                <span class="flip-cta">Saber més →</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front front-2">
+                                <span class="flip-icon">💻</span>
+                                <h3>Codi</h3>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>Desenvolupament</h4>
+                                <p>Programem amb les millors pràctiques i tecnologies actuals del mercat.</p>
+                                <span class="flip-cta">Saber més →</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front front-3">
+                                <span class="flip-icon">🚀</span>
+                                <h3>Llançament</h3>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>Publicació</h4>
+                                <p>T'acompanyem en el procés de publicació i manteniment del teu projecte.</p>
+                                <span class="flip-cta">Saber més →</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front front-4">
+                                <span class="flip-icon">📊</span>
+                                <h3>Analítica</h3>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>Mètriques</h4>
+                                <p>Analitzem les dades per optimitzar i millorar constantment els resultats.</p>
+                                <span class="flip-cta">Saber més →</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== -->
+            <!-- COMPONENT 4: ACCORDION -->
+            <!-- ==================== -->
+            <section class="component-card">
+                <div class="component-header">
+                    <span class="component-icon">📋</span>
+                    <div class="component-info">
+                        <h2 class="component-title">Acordió / FAQ</h2>
+                        <p class="component-desc">Panell desplegable amb checkbox i <code>max-height</code> animat.</p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <input type="checkbox" id="acc1" class="accordion-input">
+                        <label for="acc1" class="accordion-header">
+                            <span class="accordion-icon-left">❓</span>
+                            <span class="accordion-title">Què és el selector :has() de CSS?</span>
+                            <span class="accordion-icon-right"></span>
+                        </label>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>El selector <code>:has()</code> és un pseudo-selector relacional que permet seleccionar un element pare basant-se en els seus fills o germans.</p>
+                                <p>Per exemple, <code>body:has(#tab1:checked)</code> selecciona el body quan l'input amb id "tab1" està marcat. Això ens permet crear components interactius sense JavaScript!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <input type="checkbox" id="acc2" class="accordion-input">
+                        <label for="acc2" class="accordion-header">
+                            <span class="accordion-icon-left">🎯</span>
+                            <span class="accordion-title">Per què usar CSS en lloc de JavaScript?</span>
+                            <span class="accordion-icon-right"></span>
+                        </label>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>Usar CSS per interactivitat bàsica té diversos avantatges:</p>
+                                <ul>
+                                    <li><strong>Rendiment:</strong> Les transicions CSS són més eficients que les animacions JS</li>
+                                    <li><strong>Accessibilitat:</strong> Funciona encara que JS estigui desactivat</li>
+                                    <li><strong>Simplicitat:</strong> Menys codi i menys dependències</li>
+                                    <li><strong>Manteniment:</strong> Més fàcil de llegir i modificar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <input type="checkbox" id="acc3" class="accordion-input">
+                        <label for="acc3" class="accordion-header">
+                            <span class="accordion-icon-left">🔧</span>
+                            <span class="accordion-title">Quins components es poden fer amb CSS?</span>
+                            <span class="accordion-icon-right"></span>
+                        </label>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>Amb CSS modern es poden crear molts components interactius:</p>
+                                <div class="component-tags">
+                                    <span class="tag">Menús desplegables</span>
+                                    <span class="tag">Modals</span>
+                                    <span class="tag">Tabs</span>
+                                    <span class="tag">Acordions</span>
+                                    <span class="tag">Carousels</span>
+                                    <span class="tag">Tooltips</span>
+                                    <span class="tag">Toggle switches</span>
+                                    <span class="tag">Lightboxes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <input type="checkbox" id="acc4" class="accordion-input">
+                        <label for="acc4" class="accordion-header">
+                            <span class="accordion-icon-left">📱</span>
+                            <span class="accordion-title">És compatible amb tots els navegadors?</span>
+                            <span class="accordion-icon-right"></span>
+                        </label>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>El selector <code>:has()</code> és compatible amb els navegadors moderns:</p>
+                                <ul>
+                                    <li>✅ Chrome 105+</li>
+                                    <li>✅ Firefox 121+</li>
+                                    <li>✅ Safari 15.4+</li>
+                                    <li>✅ Edge 105+</li>
+                                </ul>
+                                <p>Per navegadors antics, es poden usar alternatives amb selectors de germans (<code>~</code> o <code>+</code>).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Exercici 006 — DAM1M04 · Formularis + Interactivitat amb CSS</p>
+            <div class="footer-links">
+                <a href="mailto:info@exemple.com">📧 info@exemple.com</a>
+                <a href="tel:+34900123456">📞 900 123 456</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

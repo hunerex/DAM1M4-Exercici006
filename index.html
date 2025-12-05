@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulari i Validació | Exercici 006</title>
+    <link rel="stylesheet" href="estils.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="pagina-formulari">
+
+    <!-- CHECKBOX OCULT PER AL MENÚ MÒBIL -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <span class="brand-icon">📝</span>
+            <span class="brand-text">Exercici 006</span>
+        </a>
+        
+        <!-- HAMBURGER ICON -->
+        <label for="menu-toggle" class="hamburger" aria-label="Menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
+
+        <nav class="navbar-menu">
+            <a href="index.html" class="nav-link active">
+                <span class="nav-icon">📋</span>
+                Formulari
+            </a>
+            <a href="interaccio.html" class="nav-link">
+                <span class="nav-icon">✨</span>
+                Interacció
+            </a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Formulari de Registre</h1>
+            <p class="hero-subtitle">Completa el formulari amb les teves dades. Els camps marcats amb * són obligatoris.</p>
+        </div>
+        <div class="hero-decoration">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+            
+            <form class="formulari" action="#" method="post" novalidate>
+                
+                <!-- SECCIÓ 1: DADES PERSONALS -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">👤</span>
+                        <h2 class="section-title">Dades Personals</h2>
+                    </div>
+
+                    <!-- NOM COMPLET -->
+                    <div class="camp">
+                        <label class="camp-label" for="nom">
+                            Nom complet <span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            <input 
+                                type="text" 
+                                id="nom" 
+                                name="nom" 
+                                placeholder="Introdueix el teu nom i cognoms"
+                                pattern="[A-Za-zÀ-ÿ\s]{3,50}" 
+                                title="Entre 3 i 50 caràcters, només lletres i espais."
+                                required>
+                            <span class="validation-icon valid-icon">✓</span>
+                            <span class="validation-icon invalid-icon">✗</span>
+                        </div>
+                        <p class="camp-error">El nom ha de tenir entre 3 i 50 caràcters (només lletres).</p>
+                        <p class="camp-hint">Introdueix el teu nom i cognoms complets.</p>
+                    </div>
+
+                    <!-- CORREU ELECTRÒNIC -->
+                    <div class="camp">
+                        <label class="camp-label" for="email">
+                            Correu electrònic <span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📧</span>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="exemple@correu.com"
+                                required>
+                            <span class="validation-icon valid-icon">✓</span>
+                            <span class="validation-icon invalid-icon">✗</span>
+                        </div>
+                        <p class="camp-error">Introdueix un correu vàlid (exemple: nom@domini.com).</p>
+                    </div>
+
+                    <!-- TELÈFON -->
+                    <div class="camp">
+                        <label class="camp-label" for="telefon">
+                            Telèfon <span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📱</span>
+                            <input 
+                                type="tel" 
+                                id="telefon" 
+                                name="telefon" 
+                                placeholder="612345678"
+                                pattern="[0-9]{9}" 
+                                title="El telèfon ha de tenir exactament 9 dígits."
+                                required>
+                            <span class="validation-icon valid-icon">✓</span>
+                            <span class="validation-icon invalid-icon">✗</span>
+                        </div>
+                        <p class="camp-error">El telèfon ha de tenir exactament 9 dígits.</p>
+                    </div>
+
+                    <!-- FILA AMB DOS CAMPS -->
+                    <div class="camp-row">
+                        <!-- EDAT -->
+                        <div class="camp">
+                            <label class="camp-label" for="edat">Edat</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🎂</span>
+                                <input 
+                                    type="number" 
+                                    id="edat" 
+                                    name="edat" 
+                                    placeholder="25"
+                                    min="0" 
+                                    max="120" 
+                                    step="1">
+                            </div>
+                            <p class="camp-hint">Entre 0 i 120 anys.</p>
+                        </div>
+
+                        <!-- DATA DE NAIXEMENT -->
+                        <div class="camp">
+                            <label class="camp-label" for="data-naixement">Data de naixement</label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="date" 
+                                    id="data-naixement" 
+                                    name="data-naixement">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓ 2: PREFERÈNCIES -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">⚙️</span>
+                        <h2 class="section-title">Preferències</h2>
+                    </div>
+
+                    <!-- FRANJA HORÀRIA -->
+                    <div class="camp">
+                        <label class="camp-label" for="hora">Franja horària de contacte</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🕐</span>
+                            <input 
+                                type="time" 
+                                id="hora" 
+                                name="hora">
+                        </div>
+                        <p class="camp-hint">Indica la millor hora per contactar-te.</p>
+                    </div>
+
+                    <!-- FILA AMB DOS CAMPS -->
+                    <div class="camp-row">
+                        <!-- COLOR PREFERIT -->
+                        <div class="camp">
+                            <label class="camp-label" for="color">Color preferit</label>
+                            <div class="color-picker-wrapper">
+                                <input 
+                                    type="color" 
+                                    id="color" 
+                                    name="color" 
+                                    value="#6366f1">
+                                <span class="color-label">Tria un color</span>
+                            </div>
+                        </div>
+
+                        <!-- PAÍS -->
+                        <div class="camp">
+                            <label class="camp-label" for="pais">País</label>
+                            <div class="select-wrapper">
+                                <select id="pais" name="pais">
+                                    <option value="">-- Selecciona --</option>
+                                    <option value="espanya">🇪🇸 Espanya</option>
+                                    <option value="franca">🇫🇷 França</option>
+                                    <option value="italia">🇮🇹 Itàlia</option>
+                                    <option value="alemanya">🇩🇪 Alemanya</option>
+                                    <option value="portugal">🇵🇹 Portugal</option>
+                                    <option value="regne-unit">🇬🇧 Regne Unit</option>
+                                    <option value="altres">🌍 Altres</option>
+                                </select>
+                                <span class="select-arrow">▼</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NIVELL DE SATISFACCIÓ (RANGE) -->
+                    <div class="camp">
+                        <label class="camp-label">Nivell d'experiència web</label>
+                        <div class="range-container">
+                            <input 
+                                type="range" 
+                                id="experiencia" 
+                                name="experiencia" 
+                                min="0" 
+                                max="100" 
+                                value="50">
+                            <div class="range-labels">
+                                <span>Principiant</span>
+                                <span>Intermedi</span>
+                                <span>Expert</span>
+                            </div>
+                            <div class="range-value">50%</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓ 3: INTERESSOS -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">💡</span>
+                        <h2 class="section-title">Interessos</h2>
+                    </div>
+
+                    <!-- AFICIONS (CHECKBOX) -->
+                    <fieldset class="camp fieldset-custom">
+                        <legend>Aficions <span class="legend-hint">(selecciona les que vulguis)</span></legend>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="aficions" value="esports">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-icon">⚽</span>
+                                <span class="checkbox-text">Esports</span>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="aficions" value="musica">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-icon">🎵</span>
+                                <span class="checkbox-text">Música</span>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="aficions" value="lectura">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-icon">📚</span>
+                                <span class="checkbox-text">Lectura</span>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="aficions" value="videojocs">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-icon">🎮</span>
+                                <span class="checkbox-text">Videojocs</span>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="aficions" value="cuina">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-icon">🍳</span>
+                                <span class="checkbox-text">Cuina</span>
+                            </label>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="aficions" value="viatges">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-icon">✈️</span>
+                                <span class="checkbox-text">Viatges</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <!-- NIVELL D'ESTUDIS (RADIO) -->
+                    <fieldset class="camp fieldset-custom">
+                        <legend>Nivell d'estudis</legend>
+                        <div class="radio-list">
+                            <label class="radio-option">
+                                <input type="radio" name="estudis" value="primaria">
+                                <span class="radio-custom"></span>
+                                <span class="radio-content">
+                                    <span class="radio-title">Primària</span>
+                                    <span class="radio-desc">Educació primària completada</span>
+                                </span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="estudis" value="secundaria">
+                                <span class="radio-custom"></span>
+                                <span class="radio-content">
+                                    <span class="radio-title">Secundària (ESO)</span>
+                                    <span class="radio-desc">Educació secundària obligatòria</span>
+                                </span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="estudis" value="batxillerat">
+                                <span class="radio-custom"></span>
+                                <span class="radio-content">
+                                    <span class="radio-title">Batxillerat / FP</span>
+                                    <span class="radio-desc">Formació post-obligatòria</span>
+                                </span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="estudis" value="universitat">
+                                <span class="radio-custom"></span>
+                                <span class="radio-content">
+                                    <span class="radio-title">Universitat</span>
+                                    <span class="radio-desc">Grau, màster o doctorat</span>
+                                </span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </section>
+
+                <!-- SECCIÓ 4: MISSATGE -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">💬</span>
+                        <h2 class="section-title">Missatge</h2>
+                    </div>
+
+                    <!-- COMENTARIS -->
+                    <div class="camp">
+                        <label class="camp-label" for="comentaris">Comentaris o suggeriments</label>
+                        <div class="textarea-wrapper">
+                            <textarea 
+                                id="comentaris" 
+                                name="comentaris" 
+                                placeholder="Escriu aquí els teus comentaris, preguntes o suggeriments..."
+                                rows="5"></textarea>
+                            <span class="textarea-counter">0 / 500</span>
+                        </div>
+                    </div>
+
+                    <!-- ACCEPTAR TERMES -->
+                    <div class="camp">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="termes" required>
+                            <span class="checkbox-custom-inline"></span>
+                            <span class="checkbox-text-inline">
+                                Accepto els <a href="#">termes i condicions</a> i la <a href="#">política de privacitat</a> <span class="required">*</span>
+                            </span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- BOTONS -->
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-secondary">
+                        <span class="btn-icon">🔄</span>
+                        Esborrar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-icon">📤</span>
+                        Enviar formulari
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Exercici 006 — DAM1M04 · Formularis + Interactivitat amb CSS</p>
+            <div class="footer-links">
+                <a href="mailto:info@exemple.com">📧 info@exemple.com</a>
+                <a href="tel:+34900123456">📞 900 123 456</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
